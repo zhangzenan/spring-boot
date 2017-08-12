@@ -6,13 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.itcast.domain.User;
+import cn.itcast.service.UserService;
 
 @RestController
 public class UserController {
+	
+	//注入Service对象
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 需求：返回基本类型json格式数据
@@ -68,5 +74,14 @@ public class UserController {
 		uList.add(u2);
 
 		return uList;
+	}
+	
+	/**
+	 * 整合SSM
+	 */
+	@RequestMapping("ssm")
+	public List<User> findAll(){
+		List<User> list=userService.findAll();
+		return list;
 	}
 }
