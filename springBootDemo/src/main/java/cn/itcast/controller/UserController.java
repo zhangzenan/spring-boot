@@ -84,4 +84,15 @@ public class UserController {
 		List<User> list=userService.findAll();
 		return list;
 	}
+	
+	
+	/**
+	 * 查询redis集群服务
+	 * @return
+	 */
+	@RequestMapping("redis")
+	public String findRedis(){
+		String findRedis=userService.findRedis();
+		return findRedis;
+	}
 }
